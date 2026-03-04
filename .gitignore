@@ -1,0 +1,11 @@
+# Fichiers temporaires Claude Code
+tmpclaude-*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editeurs
+.vscode/
+*.swp
+*.swo

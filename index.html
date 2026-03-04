@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doryan Anglio — Portfolio BTS SIO SLAM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- =====================================================
+         NAVBAR
+         ===================================================== -->
+    <nav class="navbar">
+        <div class="logo">🕸 SLAM_DEV</div>
+        <ul class="nav-links">
+            <li><a href="#hub">Le Hub</a></li>
+            <li><a href="#skills">Compétences</a></li>
+            <li><a href="#missions">Missions</a></li>
+            <li><a href="#veille">Daily Bugle</a></li>
+            <li><a href="#archives">Archives</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- =====================================================
+         LE HUB — ACCUEIL
+         ===================================================== -->
+    <header id="hub" class="hero-section">
+        <div class="hud-overlay"></div>
+        <div class="web-overlay"></div>
+
+        <div class="hero-content">
+            <div class="status-badge">
+                <span class="dot"></span> SYSTÈME EN LIGNE
+            </div>
+
+            <h1 class="main-title">
+                Doryan <br>
+                <span class="highlight">Anglio</span>
+            </h1>
+
+            <h2>Développeur <span class="slam-text">SLAM</span></h2>
+
+            <p class="hero-description">
+                "Un grand pouvoir implique une grande responsabilité."<br>
+                Prêt à concevoir, développer et sécuriser les applications de demain.
+            </p>
+
+            <div class="action-group">
+                <a href="#missions" class="btn-primary">Lancer la mission</a>
+                <a href="#contact" class="btn-secondary">Me contacter</a>
+             
+                <a href="assets/CV-Doryan-Anglio.pdf" download class="btn-cv">Télécharger le CV</a>
+            </div>
+        </div>
+
+        <div class="hud-mission-display">
+            <div class="mission-header">OBJECTIF ACTUEL</div>
+            <ul class="mission-list">
+                <li class="mission-item done">Valider le BTS SIO SLAM</li>
+                <li class="mission-item">Déployer le portfolio v1.0</li>
+                <li class="mission-item pulse">Sécuriser une alternance / poste</li>
+            </ul>
+        </div>
+
+    </header>
+
+    <!-- =====================================================
+         ARBRE DE COMPÉTENCES — Peter vs Miles
+         ===================================================== -->
+    <section id="skills" class="skills-section">
+
+        <!-- Panneau d'info HUD — apparaît au survol d'un nœud -->
+        <div class="skill-info-panel" id="skill-info-panel">
+            <div class="panel-header">
+                <span class="panel-name" id="panel-name">—</span>
+                <span class="panel-mastery" id="panel-mastery">—</span>
+            </div>
+            <div class="panel-body">
+                <div class="panel-row">
+                    <span class="panel-label">TYPE</span>
+                    <span id="panel-type">—</span>
+                </div>
+                <div class="panel-row">
+                    <span class="panel-label">UTILISÉ</span>
+                    <span id="panel-usage">—</span>
+                </div>
+                <div class="panel-row">
+                    <span class="panel-label">FORCES</span>
+                    <span id="panel-strengths">—</span>
+                </div>
+            </div>
+            <div class="panel-hint">[ CLIC ] pour voir les connexions</div>
+        </div>
+
+        <div class="section-header reveal">
+            <h2 class="section-title">Arbre de <span class="highlight">Compétences</span></h2>
+            <p class="section-subtitle">Capacités débloquées — Cliquer sur un nœud pour voir ses connexions.</p>
+
+            <!-- Légende des niveaux -->
+            <div class="mastery-legend">
+                <span class="legend-item"><span class="legend-dot mastered-dot"></span> Maîtrisé</span>
+                <span class="legend-item"><span class="legend-dot unlocked-dot"></span> Acquis</span>
+                <span class="legend-item"><span class="legend-dot learning-dot"></span> En cours</span>
+            </div>
+        </div>
+
+        <!-- Légende des branches -->
+        <div class="branch-legend reveal">
+            <span class="branch-label red-label">⬤ CÔTÉ PETER — Core &amp; Backend</span>
+            <span class="branch-label gold-label">⬤ COMMUNS — Outils &amp; Méthodes</span>
+            <span class="branch-label blue-label">⬤ CÔTÉ MILES — Modern &amp; Frontend</span>
+        </div>
+
+        <div class="skill-tree-container">
+
+            <!-- ===== BRANCHE PETER (Rouge — Core / Backend) ===== -->
+            <div class="skill-branch reveal delay-1">
+                <h3 class="branch-title red-glow">Côté Peter</h3>
+                <div class="node-path">
+
+                    <div class="skill-node back-node mastered" id="node-html"
+                        data-mastery="mastered"
+                        data-type="Langages Fondamentaux"
+                        data-usage="Tous les projets web, Portfolio FNSM"
+                        data-strengths="Sémantique, animations CSS, responsive"
+                        data-connects="node-js,node-bootstrap">
+                        <span class="skill-name">HTML5 / CSS3</span>
+                        <span class="skill-level">MAÎTRISÉ</span>
+                    </div>
+                    <div class="path-line back-line"></div>
+
+                    <div class="skill-node back-node mastered" id="node-php"
+                        data-mastery="mastered"
+                        data-type="Langage Backend"
+                        data-usage="Projets BTS, cours, mini-projets"
+                        data-strengths="CRUD, PDO, sessions, formulaires"
+                        data-connects="node-sql,node-nodejs">
+                        <span class="skill-name">PHP</span>
+                        <span class="skill-level">MAÎTRISÉ</span>
+                    </div>
+                    <div class="path-line back-line"></div>
+
+                    <div class="skill-node back-node mastered" id="node-java"
+                        data-mastery="mastered"
+                        data-type="Langage Backend — POO"
+                        data-usage="Cours BTS, PPE Application bureau"
+                        data-strengths="Orienté objet, patterns, robustesse"
+                        data-connects="node-spring,node-sql">
+                        <span class="skill-name">Java (POO)</span>
+                        <span class="skill-level">MAÎTRISÉ</span>
+                    </div>
+                    <div class="path-line back-line"></div>
+
+                    <div class="skill-node back-node mastered" id="node-sql"
+                        data-mastery="mastered"
+                        data-type="Base de Données"
+                        data-usage="Stage FenziConnect, PPE, cours BTS"
+                        data-strengths="Merise, requêtes complexes, jointures"
+                        data-connects="node-php,node-java,node-spring">
+                        <span class="skill-name">SQL / MySQL</span>
+                        <span class="skill-level">MAÎTRISÉ</span>
+                    </div>
+                    <div class="path-line back-line"></div>
+
+                    <div class="skill-node back-node learning" id="node-spring"
+                        data-mastery="learning"
+                        data-type="Framework Backend Java"
+                        data-usage="Stage FenziConnect — Module Facturation"
+                        data-strengths="REST API, IoC, déploiement prod"
+                        data-connects="node-java,node-postman,node-angular">
+                        <span class="skill-name">Spring Boot</span>
+                        <span class="skill-level">EN COURS</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ===== BRANCHE COMMUNE (Or — Outils & Méthodes) ===== -->
+            <div class="skill-branch reveal delay-2">
+                <h3 class="branch-title gold-glow">Communs</h3>
+                <div class="node-path">
+
+                    <div class="skill-node center-node mastered" id="node-git"
+                        data-mastery="mastered"
+                        data-type="Outil de Versionnage"
+                        data-usage="Tous les projets, stage FenziConnect (GitLab)"
+                        data-strengths="Branches, merge requests, workflow CI"
+                        data-connects="node-agile,node-postman">
+                        <span class="skill-name">GitHub / GitLab</span>
+                        <span class="skill-level">MAÎTRISÉ</span>
+                    </div>
+                    <div class="path-line center-line"></div>
+
+                    <div class="skill-node center-node mastered" id="node-bootstrap"
+                        data-mastery="mastered"
+                        data-type="Framework CSS"
+                        data-usage="Portfolio FNSM, projets web BTS"
+                        data-strengths="Grilles responsive, composants UI"
+                        data-connects="node-html,node-vuejs">
+                        <span class="skill-name">Bootstrap</span>
+                        <span class="skill-level">MAÎTRISÉ</span>
+                    </div>
+                    <div class="path-line center-line"></div>
+
+                    <div class="skill-node center-node mastered" id="node-postman"
+                        data-mastery="mastered"
+                        data-type="Outil de Test API"
+                        data-usage="Stage FenziConnect — Tests qualité"
+                        data-strengths="Collections, tests auto, documentation"
+                        data-connects="node-spring,node-nodejs">
+                        <span class="skill-name">Postman</span>
+                        <span class="skill-level">MAÎTRISÉ</span>
+                    </div>
+                    <div class="path-line center-line"></div>
+
+                    <div class="skill-node center-node unlocked" id="node-agile"
+                        data-mastery="unlocked"
+                        data-type="Gestion de Projet"
+                        data-usage="Stage FenziConnect — Jira, Scrum"
+                        data-strengths="Sprints, backlog, daily stand-up"
+                        data-connects="node-git,node-ia">
+                        <span class="skill-name">Méth. Agiles</span>
+                        <span class="skill-level">ACQUIS</span>
+                    </div>
+                    <div class="path-line center-line"></div>
+
+                    <div class="skill-node center-node unlocked" id="node-archi"
+                        data-mastery="unlocked"
+                        data-type="Conception Logicielle"
+                        data-usage="Cours BTS, stage, projets PPE"
+                        data-strengths="MVC, couches métier, Figma, Merise"
+                        data-connects="node-java,node-spring,node-ia">
+                        <span class="skill-name">Architecture</span>
+                        <span class="skill-level">ACQUIS</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ===== BRANCHE MILES (Bleu — Modern & Frontend) ===== -->
+            <div class="skill-branch reveal delay-3">
+                <h3 class="branch-title blue-glow">Côté Miles</h3>
+                <div class="node-path">
+
+                    <div class="skill-node front-node mastered" id="node-js"
+                        data-mastery="mastered"
+                        data-type="Langage Frontend"
+                        data-usage="Portfolio FNSM, projets web, mini-apps"
+                        data-strengths="DOM, async/await, ES6+, manipulation UI"
+                        data-connects="node-html,node-nodejs,node-vuejs,node-angular">
+                        <span class="skill-name">JavaScript</span>
+                        <span class="skill-level">MAÎTRISÉ</span>
+                    </div>
+                    <div class="path-line front-line"></div>
+
+                    <div class="skill-node front-node unlocked" id="node-nodejs"
+                        data-mastery="unlocked"
+                        data-type="Runtime Backend JavaScript"
+                        data-usage="Stage 1ère année — API REST de gestion"
+                        data-strengths="Non-bloquant, Express, NPM, endpoints"
+                        data-connects="node-js,node-postman,node-php">
+                        <span class="skill-name">Node.js</span>
+                        <span class="skill-level">ACQUIS</span>
+                    </div>
+                    <div class="path-line front-line"></div>
+
+                    <div class="skill-node front-node unlocked" id="node-vuejs"
+                        data-mastery="unlocked"
+                        data-type="Framework Frontend"
+                        data-usage="Cours BTS, projets personnels"
+                        data-strengths="Réactivité, composants, SPA, v-bind"
+                        data-connects="node-js,node-bootstrap">
+                        <span class="skill-name">Vue.js</span>
+                        <span class="skill-level">ACQUIS</span>
+                    </div>
+                    <div class="path-line front-line"></div>
+
+                    <div class="skill-node front-node learning" id="node-angular"
+                        data-mastery="learning"
+                        data-type="Framework Frontend — TypeScript"
+                        data-usage="Stage FenziConnect — Interface Facturation"
+                        data-strengths="TypeScript, services, modules, RxJS"
+                        data-connects="node-spring,node-js">
+                        <span class="skill-name">Angular</span>
+                        <span class="skill-level">EN COURS</span>
+                    </div>
+                    <div class="path-line front-line"></div>
+
+                    <div class="skill-node front-node unlocked" id="node-ia"
+                        data-mastery="unlocked"
+                        data-type="Compétence Émergente"
+                        data-usage="Usage quotidien — Claude, Copilot, ChatGPT"
+                        data-strengths="Prompt engineering, intégration IA, optimisation"
+                        data-connects="node-archi,node-agile">
+                        <span class="skill-name">IA / Prompts</span>
+                        <span class="skill-level">ACQUIS</span>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =====================================================
+         JOURNAL DES MISSIONS
+         ===================================================== -->
+    <section id="missions" class="missions-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Journal des <span class="highlight">Missions</span></h2>
+                <p class="section-subtitle">Historique des opérations, stages et projets SLAM.</p>
+            </div>
+
+            <!-- FILTRES CATÉGORIES -->
+            <div class="mission-filters reveal">
+                <button class="filter-btn active" data-filter="all">Tous</button>
+                <button class="filter-btn" data-filter="stage">Stage</button>
+                <button class="filter-btn" data-filter="dev">Développement</button>
+                <button class="filter-btn" data-filter="design">Design / Figma</button>
+            </div>
+
+            <div class="row g-4" id="missions-grid">
+
+                <!-- MISSION PRINCIPALE — Stage FenziConnect -->
+                <div class="col-md-6 col-lg-4 reveal delay-1 mission-card-wrapper" data-category="stage">
+                    <div class="mission-card main-mission">
+                        <div class="mission-img">
+                            <div class="card-gallery" id="gallery-fenziconnect">
+                                <img class="gallery-img active" src="assets/images/detail-tache.png" alt="FenziConnect — Détail tâche">
+                                <img class="gallery-img" src="assets/images/gestion-tache.png" alt="FenziConnect — Gestion tâches">
+                                <img class="gallery-img" src="assets/images/cree-facture.png" alt="FenziConnect — Créer facture">
+                            </div>
+                            <div class="gallery-dots" id="dots-fenziconnect">
+                                <span class="gallery-dot active" data-gallery="gallery-fenziconnect" data-index="0"></span>
+                                <span class="gallery-dot" data-gallery="gallery-fenziconnect" data-index="1"></span>
+                                <span class="gallery-dot" data-gallery="gallery-fenziconnect" data-index="2"></span>
+                            </div>
+                            <span class="mission-badge red-badge">Quête Principale</span>
+                        </div>
+                        <div class="mission-info">
+                            <h3>Système de Gestion ERP — FenziConnect</h3>
+                            <p class="mission-subtitle">Module de Facturation &amp; Workflow Enterprise</p>
+                            <p>Conception d'une API REST Spring Boot + dashboard Angular avec gestion du cycle de vie des factures, calcul automatique HT/TVA/TTC et filtrage temps réel.</p>
+                            <div class="loot-label">⚡ EXP ACQUISE</div>
+                            <div class="tech-tags">
+                                <span class="tag">Angular</span>
+                                <span class="tag">Spring Boot</span>
+                                <span class="tag">PostgreSQL</span>
+                                <span class="tag">Postman</span>
+                                <span class="tag">Jira</span>
+                            </div>
+                            <button class="mission-detail-btn" data-mission="fenziconnect">Voir le dossier →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MISSION ANNEXE — CoreFlow -->
+                <div class="col-md-6 col-lg-4 reveal delay-2 mission-card-wrapper" data-category="dev">
+                    <div class="mission-card side-mission">
+                        <div class="mission-img">
+                            <img src="assets/images/coreflow.png" alt="CoreFlow — Plateforme Intranet">
+                            <span class="mission-badge blue-badge">Quête Annexe</span>
+                            <span class="mission-badge" style="background:rgba(0,229,255,0.15);color:var(--tech-blue);border:1px solid rgba(0,229,255,0.4);top:50px;">E5</span>
+                        </div>
+                        <div class="mission-info">
+                            <h3>CoreFlow — Plateforme Intranet</h3>
+                            <p class="mission-subtitle">BTS SIO 2ème Année — Épreuve E5</p>
+                            <p>Plateforme intranet d'entreprise regroupant la gestion des congés, des événements internes, des tickets support et l'accès aux documents selon les rôles.</p>
+                            <div class="loot-label">⚡ EXP ACQUISE</div>
+                            <div class="tech-tags">
+                                <span class="tag">Vue.js</span>
+                                <span class="tag">Node.js</span>
+                                <span class="tag">MySQL</span>
+                                <span class="tag">GitHub</span>
+                            </div>
+                            <button class="mission-detail-btn" data-mission="coreflow">Voir le dossier →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MISSION ANNEXE — Portfolio FNSM -->
+                <div class="col-md-6 col-lg-4 reveal delay-3 mission-card-wrapper" data-category="dev">
+                    <div class="mission-card side-mission">
+                        <div class="mission-img">
+                            <!--
+                                ⚠️ IMAGE PORTFOLIO :
+                                Tu peux mettre une capture d'écran de ce portfolio !
+                                Exemple : <img src="assets/images/portfolio-fnsm.jpg" alt="Portfolio FNSM">
+                                fnsm = "Futur Nouveau Site de Miles"
+                            -->
+                            <img src="assets/images/portfolio-fnsm.png" alt="Portfolio FNSM">
+                            <span class="mission-badge blue-badge">Quête Annexe</span>
+                            <span class="mission-badge gold-badge">IA +</span>
+                        </div>
+                        <div class="mission-info">
+                            <h3>Portfolio FNSM — Spider-Man 2 PS5</h3>
+                            <p class="mission-subtitle">Projet Personnel — Design Gaming × Dev Pro</p>
+                            <p>Portfolio entièrement sur-mesure inspiré du HUD de Spider-Man 2 PS5. L'idée : fusionner l'esthétique d'un jeu AAA avec un portfolio professionnel — pour se démarquer de tous les templates.</p>
+                            <div class="loot-label">⚡ EXP ACQUISE</div>
+                            <div class="tech-tags">
+                                <span class="tag">HTML/CSS</span>
+                                <span class="tag">JS Vanilla</span>
+                                <span class="tag">Bootstrap</span>
+                                <span class="tag">Figma</span>
+                            </div>
+                            <div class="ia-card-boost">⚡ Workflow IA + Figma — gain de productivité estimé : 30%</div>
+                            <button class="mission-detail-btn" data-mission="portfolio">Voir le dossier →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MISSION ANNEXE — TP Figma Restaurant Gastronomique -->
+                <div class="col-md-6 col-lg-4 reveal delay-2 mission-card-wrapper" data-category="design">
+                    <div class="mission-card side-mission">
+                        <div class="mission-img">
+                            <img src="assets/images/maquette-restaurant.png" alt="TP Figma Restaurant Gastronomique">
+                            <span class="mission-badge blue-badge">Quête Annexe</span>
+                            <span class="mission-badge" style="background:rgba(255,215,0,0.12);color:var(--miles-yellow);border:1px solid rgba(255,215,0,0.35);top:50px;">Figma TP</span>
+                        </div>
+                        <div class="mission-info">
+                            <h3>Maquette UI — Restaurant Gastronomique</h3>
+                            <p class="mission-subtitle">TP Imposé — Cours BTS SIO 1ère Année</p>
+                            <p>Conception d'une maquette haute-fidélité pour un restaurant gastronomique fictif : charte graphique élaborée, wireframes, prototype interactif navigable sur Figma.</p>
+                            <div class="loot-label">⚡ EXP ACQUISE</div>
+                            <div class="tech-tags">
+                                <span class="tag">Figma</span>
+                                <span class="tag">UX/UI</span>
+                                <span class="tag">Maquettage</span>
+                                <span class="tag">Prototypage</span>
+                            </div>
+                            <button class="mission-detail-btn" data-mission="figma_restaurant">Voir le dossier →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MISSION ANNEXE — Projet Figma Événementielle -->
+                <div class="col-md-6 col-lg-4 reveal delay-3 mission-card-wrapper" data-category="design">
+                    <div class="mission-card side-mission">
+                        <div class="mission-img">
+                            <img src="assets/images/maquette-events.png" alt="Projet Figma Événementielle">
+                            <span class="mission-badge blue-badge">Quête Annexe</span>
+                            <span class="mission-badge" style="background:rgba(255,215,0,0.12);color:var(--miles-yellow);border:1px solid rgba(255,215,0,0.35);top:50px;">Figma Libre</span>
+                        </div>
+                        <div class="mission-info">
+                            <h3>Maquette UI — Agence Événementielle</h3>
+                            <p class="mission-subtitle">Projet Libre — Cours BTS SIO 1ère Année</p>
+                            <p>Conception libre d'une interface pour une agence événementielle : identité visuelle personnalisée, système de navigation, galerie portfolio et formulaire de contact.</p>
+                            <div class="loot-label">⚡ EXP ACQUISE</div>
+                            <div class="tech-tags">
+                                <span class="tag">Figma</span>
+                                <span class="tag">UX/UI</span>
+                                <span class="tag">Design System</span>
+                                <span class="tag">Prototypage</span>
+                            </div>
+                            <button class="mission-detail-btn" data-mission="figma_events">Voir le dossier →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MISSION ANNEXE — Maquette Bowling Belle Épine -->
+                <div class="col-md-6 col-lg-4 reveal delay-1 mission-card-wrapper" data-category="design">
+                    <div class="mission-card side-mission">
+                        <div class="mission-img">
+                            <img src="assets/images/beach-bowling.png" alt="Maquette Bowling Belle Épine">
+                            <span class="mission-badge blue-badge">Quête Annexe</span>
+                            <span class="mission-badge" style="background:rgba(255,215,0,0.12);color:var(--miles-yellow);border:1px solid rgba(255,215,0,0.35);top:50px;">Initiative Pro</span>
+                        </div>
+                        <div class="mission-info">
+                            <h3>Site Vitrine — Bowling Arcade Belle Épine</h3>
+                            <p class="mission-subtitle">Projet Personnel — Démarche Client Freelance</p>
+                            <p>Conception d'une maquette site vitrine non sollicitée pour un bowling avec jeux d'arcane à Belle Épine. Démarche commerciale autonome pour proposer mes services en freelance.</p>
+                            <div class="loot-label">⚡ EXP ACQUISE</div>
+                            <div class="tech-tags">
+                                <span class="tag">Figma</span>
+                                <span class="tag">UX/UI</span>
+                                <span class="tag">Site Vitrine</span>
+                                <span class="tag">Freelance</span>
+                            </div>
+                            <button class="mission-detail-btn" data-mission="figma_bowling">Voir le dossier →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MISSION ANNEXE — Réservation de Salles -->
+                <div class="col-md-6 col-lg-4 reveal delay-1 mission-card-wrapper" data-category="dev">
+                    <div class="mission-card side-mission">
+                        <div class="mission-img">
+                            <img src="assets/images/reservation.png" alt="Système de Réservation">
+                            <span class="mission-badge blue-badge">Quête Annexe</span>
+                            <span class="mission-badge" style="background:rgba(0,229,255,0.15);color:var(--tech-blue);border:1px solid rgba(0,229,255,0.4);top:50px;">1ère année</span>
+                        </div>
+                        <div class="mission-info">
+                            <h3>Réservation de Salles & Matériels</h3>
+                            <p class="mission-subtitle">Projet Piscine — BTS SIO × BTS CIEL</p>
+                            <p>Application web PHP/MySQL de gestion de réservations de ressources scolaires avec affichage conditionnel des disponibilités en temps réel.</p>
+                            <div class="loot-label">⚡ EXP ACQUISE</div>
+                            <div class="tech-tags">
+                                <span class="tag">PHP</span>
+                                <span class="tag">MySQL</span>
+                                <span class="tag">HTML/CSS</span>
+                                <span class="tag">GitHub</span>
+                            </div>
+                            <button class="mission-detail-btn" data-mission="reservation">Voir le dossier →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MISSION ANNEXE — Dashboard Power BI Sneakers -->
+                <div class="col-md-6 col-lg-4 reveal delay-2 mission-card-wrapper" data-category="dev">
+                    <div class="mission-card side-mission">
+                        <div class="mission-img">
+                            <!--
+                                ⚠️ IMAGE POWER BI :
+                                Remplace par une capture d'écran de ton dashboard Power BI.
+                                Exemple : <img src="assets/images/powerbi-sneakers.png" alt="Dashboard Sneakers">
+                            -->
+                            <img src="assets/images/powerbi-sneakers.png" alt="Dashboard Sneakers Power BI">
+                            <span class="mission-badge blue-badge">Quête Annexe</span>
+                            <span class="mission-badge" style="background:rgba(255,215,0,0.12);color:var(--miles-yellow);border:1px solid rgba(255,215,0,0.35);top:50px;">Data</span>
+                        </div>
+                        <div class="mission-info">
+                            <h3>Dashboard Power BI — Marché Sneakers</h3>
+                            <p class="mission-subtitle">Workshop Master 2 — Analyse de Données</p>
+                            <p>Dashboard d'analyse du marché des sneakers conçu lors d'un atelier animé par des étudiants Master 2 : exploration des données, visualisations interactives et KPIs clés sur Power BI.</p>
+                            <div class="loot-label">⚡ EXP ACQUISE</div>
+                            <div class="tech-tags">
+                                <span class="tag">Power BI</span>
+                                
+                                <span class="tag">Analyse</span>
+                            </div>
+                            <button class="mission-detail-btn" data-mission="powerbi">Voir le dossier →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MISSION ANNEXE — Freedom Money -->
+                <div class="col-md-6 col-lg-4 reveal delay-3 mission-card-wrapper" data-category="dev">
+                    <div class="mission-card side-mission">
+                        <div class="mission-img">
+                            <div class="card-gallery" id="gallery-freedommoney">
+                                <img class="gallery-img active" src="assets/images/Gallery_FreedomMoney1.png" alt="Freedom Money Java — Vue 1">
+                                <img class="gallery-img" src="assets/images/Gallery_FreedomMoney2.png" alt="Freedom Money Java — Vue 2">
+                                <img class="gallery-img" src="assets/images/Gallery_FreedomMoney3.png" alt="Freedom Money Java — Vue 3">
+                            </div>
+                            <div class="gallery-dots" id="dots-freedommoney">
+                                <span class="gallery-dot active" data-gallery="gallery-freedommoney" data-index="0"></span>
+                                <span class="gallery-dot" data-gallery="gallery-freedommoney" data-index="1"></span>
+                                <span class="gallery-dot" data-gallery="gallery-freedommoney" data-index="2"></span>
+                            </div>
+                            <span class="mission-badge blue-badge">Quête Annexe</span>
+                            <span class="mission-badge" style="background:rgba(0,229,255,0.15);color:var(--tech-blue);border:1px solid rgba(0,229,255,0.4);top:50px;">POO Java</span>
+                        </div>
+                        <div class="mission-info">
+                            <h3>Freedom Money — Gestion Bancaire</h3>
+                            <p class="mission-subtitle">Projet Cours — BTS SIO SLAM</p>
+                            <p>Application bureau Java MVC de gestion de comptes bancaires : authentification avec rôles Admin/Client, modèle orienté objet (Compte, Personne), logique métier via contrôleurs dédiés.</p>
+                            <div class="loot-label">⚡ EXP ACQUISE</div>
+                            <div class="tech-tags">
+                                <span class="tag">Java</span>
+                                <span class="tag">POO</span>
+                                <span class="tag">MVC</span>
+                                <span class="tag">Eclipse</span>
+                            </div>
+                            <button class="mission-detail-btn" data-mission="freedommoney">Voir le dossier →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!--
+                    Copie-colle le bloc ci-dessous pour ajouter une nouvelle mission.
+                    Change le texte, les tags, et l'image.
+
+                <div class="col-md-6 col-lg-4 reveal delay-1">
+                    <div class="mission-card side-mission">
+                        <div class="mission-img">
+                            <img src="assets/images/nom-projet.jpg" alt="Nom du projet">
+                            <span class="mission-badge blue-badge">Quête Annexe</span>
+                        </div>
+                        <div class="mission-info">
+                            <h3>Nom du projet</h3>
+                            <p>Description courte du projet (2-3 phrases).</p>
+                            <div class="tech-tags">
+                                <span class="tag">Techno 1</span>
+                                <span class="tag">Techno 2</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                -->
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =====================================================
+         EXPÉRIENCE PROFESSIONNELLE (DOMINOS — EN COMMENTAIRE)
+         Pour activer : décommente tout le bloc ci-dessous
+         ===================================================== -->
+    <!--
+    <section id="experience" class="missions-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Expérience <span class="highlight">Pro</span></h2>
+                <p class="section-subtitle">Expériences en dehors du cursus BTS.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4 reveal delay-1">
+                    <div class="mission-card main-mission">
+                        <div class="mission-img">
+                            <img src="assets/images/dominos.jpg" alt="Dominos Pizza">
+                            <span class="mission-badge red-badge">Poste Actuel</span>
+                        </div>
+                        <div class="mission-info">
+                            <h3>1er Équipier — Dominos Pizza</h3>
+                            <p>
+                                Gestion opérationnelle du point de vente, coordination d'équipe,
+                                gestion des stocks et respect des procédures qualité.
+                                Équivalent rôle manager.
+                            </p>
+                            <div class="tech-tags">
+                                <span class="tag">Management</span>
+                                <span class="tag">Coordination</span>
+                                <span class="tag">Gestion opérationnelle</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+
+
+    <!-- =====================================================
+         DAILY BUGLE — VEILLE TECHNOLOGIQUE
+         ===================================================== -->
+    <section id="veille" class="news-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">The <span class="highlight">Daily Bugle</span></h2>
+                <!--
+                    ⚠️ SUJET DE VEILLE :
+                    Change la ligne ci-dessous quand tu auras choisi ton sujet.
+                    Format recommandé : "Veille Technologique — [Ton sujet]"
+                    Exemples :
+                      - "L'IA générative dans le workflow du développeur SLAM"
+                      - "WebAssembly : le futur du navigateur ?"
+                      - "Sécurité des API REST — OWASP Top 10 en 2026"
+                      - "Angular vs Vue.js : quel framework pour mon BTS ?"
+                -->
+                <p class="section-subtitle">Veille Technologique — <em>L'IA générative dans le développement Fullstack Angular / Spring Boot</em></p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-8 reveal delay-1">
+                    <div class="news-main-card">
+                        <div class="news-label">ARTICLE PRINCIPAL</div>
+                        <div class="news-content">
+                            <h3>L'IA Générative transforme-t-elle vraiment le cycle de développement Fullstack en 2026 ?</h3>
+                            <p>
+                                GitHub Copilot, Claude, ChatGPT — depuis 2024, les assistants IA ne sont plus des gadgets expérimentaux mais des outils intégrés au quotidien du développeur fullstack. Sur une stack Angular / Spring Boot comme celle utilisée lors de mon stage chez FenziConnect, ces outils ont permis d'accélérer le scaffolding, de réduire le temps passé sur les tâches répétitives (CRUD, formulaires, documentation) et d'accélérer la montée en compétence sur Angular en autonomie. Mais l'IA ne remplace pas le développeur : la sécurité des API, la logique métier et la revue de code restent une responsabilité humaine irremplaçable.
+                            </p>
+                            <a href="veille.html" class="read-more">Lire la synthèse complète →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 reveal delay-2">
+                    <div class="news-sidebar">
+                        <div class="sidebar-item">
+                            <span class="news-date">2025 — Baeldung</span>
+                            <h4>Spring AI & GitHub Copilot — L'écosystème Java entre dans l'ère de l'IA générative</h4>
+                        </div>
+                        <div class="sidebar-item">
+                            <span class="news-date">2025 — Angular Blog</span>
+                            <h4>Angular 19 & Signals — Vers un frontend plus réactif, assisté par les outils IA de JetBrains</h4>
+                        </div>
+                        <div class="sidebar-item">
+                            <span class="news-date">2025 — Le Journal du Net</span>
+                            <h4>55% des développeurs utilisent l'IA au quotidien — ce que ça change pour les équipes DevOps et SLAM</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- =====================================================
+         ARCHIVES & ACCRÉDITATIONS
+         ===================================================== -->
+    <section id="archives" class="archives-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Archives & <span class="highlight">Accréditations</span></h2>
+                <p class="section-subtitle">Dossiers classifiés — Documents officiels du parcours BTS SIO SLAM.</p>
+            </div>
+
+            <div class="archives-grid">
+
+                <!-- RAPPORT DE STAGE -->
+                <div class="archive-card reveal delay-1">
+                    <div class="archive-sweep"></div>
+                    <div class="archive-file-icon">
+                        <span class="archive-icon-char">📄</span>
+                    </div>
+                    <div class="archive-info">
+                        <span class="archive-type">Rapport — Stage BTS SIO</span>
+                        <h3 class="archive-title">Rapport de Stage</h3>
+                        <p class="archive-desc">Développement ERP FenziConnect — Module Facturation & Gestion des Tâches. Stack Angular / Spring Boot.</p>
+                        <div class="archive-meta">
+                            <span class="archive-status status-validated">✓ Validé</span>
+                            <span class="archive-date">2026</span>
+                        </div>
+                    </div>
+                    <a href="rapport-stage.html" class="archive-btn">Ouvrir le dossier →</a>
+                </div>
+
+                <!-- CV -->
+                <div class="archive-card reveal delay-2">
+                    <div class="archive-sweep"></div>
+                    <div class="archive-file-icon">
+                        <span class="archive-icon-char">📋</span>
+                    </div>
+                    <div class="archive-info">
+                        <span class="archive-type">Document — Curriculum Vitae</span>
+                        <h3 class="archive-title">CV Doryan Anglio</h3>
+                        <p class="archive-desc">Développeur Fullstack — BTS SIO SLAM. Disponible pour alternance ou premier poste.</p>
+                        <div class="archive-meta">
+                            <span class="archive-status status-validated">✓ À jour</span>
+                            <span class="archive-date">2026</span>
+                        </div>
+                    </div>
+                    <a href="assets/CV-Doryan-Anglio.pdf" download class="archive-btn">Télécharger →</a>
+                </div>
+
+                <!-- COMPÉTENCES E4 -->
+                <div class="archive-card reveal delay-3">
+                    <div class="archive-sweep"></div>
+                    <div class="archive-file-icon">
+                        <span class="archive-icon-char">🔐</span>
+                    </div>
+                    <div class="archive-info">
+                        <span class="archive-type">Référentiel — BTS SIO SLAM</span>
+                        <h3 class="archive-title">Compétences E4</h3>
+                        <p class="archive-desc">Développement d'applications web, base de données relationnelle, tests logiciels, travail en équipe Agile.</p>
+                        <div class="archive-meta">
+                            <span class="archive-status status-validated">✓ Validées</span>
+                            <span class="archive-date">SLAM</span>
+                        </div>
+                    </div>
+                    <a href="#skills" class="archive-btn archive-btn-internal">Voir les compétences →</a>
+                </div>
+
+                <!-- TABLEAU DE SYNTHÈSE -->
+                <div class="archive-card reveal delay-4">
+                    <div class="archive-sweep"></div>
+                    <div class="archive-file-icon">
+                        <span class="archive-icon-char">📊</span>
+                    </div>
+                    <div class="archive-info">
+                        <span class="archive-type">Document — BTS SIO SLAM</span>
+                        <h3 class="archive-title">Tableau de Synthèse</h3>
+                        <p class="archive-desc">Tableau de synthèse des compétences E4 et E5 — Récapitulatif des situations professionnelles significatives.</p>
+                        <div class="archive-meta">
+                            <span class="archive-status status-validated">✓ Complété</span>
+                            <span class="archive-date">2026</span>
+                        </div>
+                    </div>
+                    <a href="assets/images/Tableau-synthese-doryan.pdf" target="_blank" class="archive-btn">Consulter →</a>
+                </div>
+
+                <!-- CONVENTION DE STAGE -->
+                <div class="archive-card archive-locked reveal" style="transition-delay: 0.5s">
+                    <div class="archive-sweep"></div>
+                    <div class="archive-file-icon">
+                        <span class="archive-icon-char">🔒</span>
+                    </div>
+                    <div class="archive-info">
+                        <span class="archive-type">Document — Convention officielle</span>
+                        <h3 class="archive-title">Convention de Stage</h3>
+                        <p class="archive-desc">Convention tripartite — Étudiant / Établissement / FenziConnect. Document confidentiel.</p>
+                        <div class="archive-meta">
+                            <span class="archive-status status-locked">⊘ Accès restreint</span>
+                            <span class="archive-date">2026</span>
+                        </div>
+                    </div>
+                    <span class="archive-btn archive-btn-locked">Accès refusé</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =====================================================
+         CONTACT
+         ===================================================== -->
+    <footer id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Établir la <span class="highlight">Connexion</span></h2>
+                <p class="section-subtitle">Disponible pour une alternance ou un premier poste en développement.</p>
+            </div>
+
+            <div class="row g-5">
+                <div class="col-md-5 reveal delay-1">
+                    <div class="contact-info-panel">
+                        <div class="info-item">
+                            <span class="label">Localisation</span>
+                            
+                            <p>Paris / Île-de-France</p>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Email</span>
+                           
+                            <p>doryananglio92290@gmail.com</p>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Formation</span>
+                            <p>BTS SIO — Option SLAM</p>
+                        </div>
+                        <div class="social-links">
+                            
+                            <a href="https://github.com/Doryan92290" target="_blank" class="social-btn">GitHub</a>
+                            <a href="https://www.linkedin.com/in/doryan-anglio-485634243" target="_blank" class="social-btn">LinkedIn</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-7 reveal delay-2">
+                    <form id="contact-form" class="tech-form">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" name="name" class="form-input" placeholder="Votre Nom" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" name="email" class="form-input" placeholder="Votre Email" required>
+                            </div>
+                            <div class="col-12">
+                                <textarea name="message" class="form-input" rows="5" placeholder="Votre Message" required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn-primary w-100" id="contact-submit">Envoyer le signal</button>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-status" id="form-status"></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 // Développé par Doryan Anglio — BTS SIO SLAM</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- =====================================================
+         MODAL MISSION LOG — Style Spider-Man 2
+         ===================================================== -->
+    <div class="mission-modal-overlay" id="mission-modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="mission-modal">
+
+            <div class="modal-header">
+                <div>
+                    <span class="modal-category" id="modal-category">—</span>
+                    <h2 class="modal-title" id="modal-title">—</h2>
+                </div>
+                <button class="modal-close" id="modal-close" aria-label="Fermer">✕</button>
+            </div>
+
+            <div class="modal-grid">
+
+                <div class="modal-section">
+                    <div class="modal-label">OBJECTIF PRINCIPAL</div>
+                    <p id="modal-objectif">—</p>
+                </div>
+
+                <div class="modal-section">
+                    <div class="modal-label">GADGETS UTILISÉS</div>
+                    <div class="modal-tags" id="modal-gadgets"></div>
+                </div>
+
+                <div class="modal-section">
+                    <div class="modal-label">PREUVE DE RÉUSSITE</div>
+                    <div id="modal-proof"></div>
+                </div>
+
+                <div class="modal-section">
+                    <div class="modal-label">STATUT</div>
+                    <p id="modal-statut">—</p>
+                </div>
+
+                <div class="modal-section modal-full" id="modal-gallery-section">
+                    <div class="modal-label">GALERIE — CAPTURES D'ÉCRAN</div>
+                    <div class="modal-gallery-grid" id="modal-gallery"></div>
+                </div>
+
+                <div class="modal-section modal-full" id="modal-details-section">
+                    <div class="modal-label">DÉTAILS TECHNIQUES</div>
+                    <div id="modal-details"></div>
+                </div>
+
+                <div class="modal-section modal-full">
+                    <div class="modal-label">⚠ ANALYSE DE RISQUE (E4 BTS SIO)</div>
+                    <ul class="modal-risks" id="modal-risks"></ul>
+                </div>
+
+                <div class="modal-ia-boost" id="modal-ia-boost">
+                    <span class="ia-boost-icon">⚡</span>
+                    <span id="modal-ia-text">—</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

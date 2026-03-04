@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapport de Stage — Doryan Anglio // FenziConnect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0A0A0C;
+            --bg-panel: #1A1A1E;
+            --bg-panel-light: #22222A;
+            --text-main: #FFFFFF;
+            --text-muted: #A0A0A5;
+            --spidey-red: #E23636;
+            --tech-blue: #00E5FF;
+            --miles-yellow: #FFD700;
+            --font-title: 'Orbitron', sans-serif;
+            --font-text: 'Inter', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ===== TOPBAR ===== */
+        .topbar {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 12, 0.95);
+            border-bottom: 1px solid var(--spidey-red);
+            padding: 14px 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .topbar-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            color: var(--tech-blue);
+            font-family: var(--font-title);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            padding: 6px 14px;
+            transition: 0.3s;
+            clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
+        }
+        .back-btn:hover { background: rgba(0, 229, 255, 0.1); border-color: var(--tech-blue); }
+
+        .dossier-label {
+            font-family: var(--font-title);
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            color: var(--spidey-red);
+            text-transform: uppercase;
+        }
+
+        .topbar-status {
+            font-family: var(--font-title);
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            color: #2ECC71;
+            text-transform: uppercase;
+        }
+
+        /* ===== HERO RAPPORT ===== */
+        .rapport-hero {
+            padding: 80px 50px 60px;
+            border-bottom: 1px solid #1D1D22;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rapport-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(to right, var(--spidey-red), var(--tech-blue), var(--miles-yellow));
+        }
+
+        .rapport-meta {
+            font-family: var(--font-title);
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            color: var(--spidey-red);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .rapport-title {
+            font-family: var(--font-title);
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1.1;
+            margin-bottom: 12px;
+        }
+
+        .rapport-title span { color: var(--tech-blue); }
+
+        .rapport-subtitle {
+            font-family: var(--font-title);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 36px;
+        }
+
+        .rapport-infos {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .info-block { display: flex; flex-direction: column; gap: 4px; }
+        .info-label {
+            font-family: var(--font-title);
+            font-size: 0.55rem;
+            letter-spacing: 2px;
+            color: var(--spidey-red);
+            text-transform: uppercase;
+        }
+        .info-value {
+            font-family: var(--font-title);
+            font-size: 0.85rem;
+            color: var(--text-main);
+        }
+
+        /* ===== TABLE DES MATIÈRES ===== */
+        .toc {
+            margin: 0 50px 0;
+            padding: 30px 35px;
+            background: var(--bg-panel);
+            border-left: 3px solid var(--tech-blue);
+            max-width: 600px;
+        }
+
+        .toc-title {
+            font-family: var(--font-title);
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            color: var(--tech-blue);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .toc ol {
+            padding-left: 20px;
+        }
+
+        .toc li {
+            font-family: var(--font-title);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .toc a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .toc a:hover { color: var(--text-main); }
+
+        /* ===== CONTENU PRINCIPAL ===== */
+        .rapport-body {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 50px;
+        }
+
+        /* Section */
+        .section-block {
+            margin-bottom: 70px;
+            padding-bottom: 70px;
+            border-bottom: 1px solid #1D1D22;
+        }
+        .section-block:last-child { border-bottom: none; }
+
+        .section-num {
+            font-family: var(--font-title);
+            font-size: 0.6rem;
+            letter-spacing: 3px;
+            color: var(--spidey-red);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .section-heading {
+            font-family: var(--font-title);
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #2A2A30;
+            position: relative;
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(to right, var(--spidey-red), var(--tech-blue));
+        }
+
+        .section-heading .highlight { color: var(--tech-blue); }
+
+        /* Sous-section */
+        .sub-section {
+            margin-bottom: 36px;
+        }
+
+        .sub-heading {
+            font-family: var(--font-title);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--tech-blue);
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(0, 229, 255, 0.15);
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+            line-height: 1.75;
+        }
+
+        /* Liste technique */
+        .tech-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tech-list li {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            padding-left: 22px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .tech-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--tech-blue);
+            font-size: 0.8rem;
+        }
+
+        /* Bloc de code */
+        .code-block {
+            background: var(--bg-panel);
+            border: 1px solid #2A2A30;
+            border-left: 3px solid var(--miles-yellow);
+            padding: 20px 24px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.82rem;
+            color: var(--miles-yellow);
+            overflow-x: auto;
+            white-space: pre;
+            line-height: 1.6;
+        }
+
+        .code-label {
+            font-family: var(--font-title);
+            font-size: 0.55rem;
+            letter-spacing: 2px;
+            color: var(--miles-yellow);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            opacity: 0.7;
+        }
+
+        /* Tableau Tech Stack */
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .tech-table th {
+            background: var(--bg-panel);
+            font-family: var(--font-title);
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            color: var(--spidey-red);
+            text-transform: uppercase;
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #2A2A30;
+        }
+
+        .tech-table td {
+            padding: 12px 16px;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            border-bottom: 1px solid #1D1D22;
+        }
+
+        .tech-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--text-main);
+        }
+
+        .tech-table td:first-child {
+            font-family: var(--font-title);
+            font-size: 0.78rem;
+            color: var(--tech-blue);
+            letter-spacing: 1px;
+        }
+
+        /* Encadré info */
+        .info-box {
+            background: rgba(0, 229, 255, 0.04);
+            border: 1px solid rgba(0, 229, 255, 0.15);
+            padding: 20px 24px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .info-box::before {
+            content: 'ℹ INFO';
+            position: absolute;
+            top: -8px;
+            left: 16px;
+            background: var(--bg-dark);
+            padding: 0 8px;
+            font-family: var(--font-title);
+            font-size: 0.55rem;
+            letter-spacing: 2px;
+            color: var(--tech-blue);
+        }
+
+        .info-box p { color: var(--text-muted); margin-bottom: 0; }
+
+        /* Encadré résultat */
+        .result-box {
+            background: rgba(46, 204, 113, 0.04);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+            padding: 20px 24px;
+            margin: 20px 0;
+        }
+
+        .result-label {
+            font-family: var(--font-title);
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            color: #2ECC71;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .result-box p { color: var(--text-muted); margin-bottom: 0; }
+
+        /* Tags stack */
+        .tag-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 12px 0;
+        }
+        .tag {
+            background: rgba(255,255,255,0.04);
+            color: var(--text-muted);
+            padding: 4px 12px;
+            font-size: 0.72rem;
+            font-family: var(--font-title);
+            letter-spacing: 1px;
+            border: 1px solid #333;
+            clip-path: polygon(6% 0, 100% 0, 94% 100%, 0 100%);
+        }
+
+        /* Footer rapport */
+        .rapport-footer {
+            background: var(--bg-panel);
+            border-top: 1px solid #1D1D22;
+            padding: 40px 50px;
+            text-align: center;
+        }
+
+        .rapport-footer p {
+            font-family: var(--font-title);
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            color: #444;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .topbar, .rapport-hero, .toc, .rapport-body, .rapport-footer {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            .toc { margin: 0 20px; }
+            .rapport-infos { gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOPBAR -->
+    <nav class="topbar">
+        <div class="topbar-left">
+            <a href="index.html" class="back-btn">← Retour au Hub</a>
+            <span class="dossier-label">Dossier Classifié — BTS SIO SLAM</span>
+        </div>
+        <span class="topbar-status">✓ DOSSIER VALIDÉ</span>
+    </nav>
+
+
+    <!-- HERO -->
+    <header class="rapport-hero">
+        <p class="rapport-meta">Rapport de Stage — Fin d'études BTS SIO</p>
+        <h1 class="rapport-title">Développement ERP<br><span>FenziConnect</span></h1>
+        <p class="rapport-subtitle">Module de facturation & gestion de tâches — Stack Angular / Spring Boot</p>
+
+        <div class="rapport-infos">
+            <div class="info-block">
+                <span class="info-label">Étudiant</span>
+                <span class="info-value">Doryan Anglio</span>
+            </div>
+            <div class="info-block">
+                <span class="info-label">Formation</span>
+                <span class="info-value">BTS SIO — Option SLAM</span>
+            </div>
+            <div class="info-block">
+                <span class="info-label">Entreprise</span>
+                <span class="info-value">FenziConnect</span>
+            </div>
+            <div class="info-block">
+                <span class="info-label">Durée</span>
+                <span class="info-value">Stage de fin d'études — 2026</span>
+            </div>
+            <div class="info-block">
+                <span class="info-label">Statut</span>
+                <span class="info-value" style="color: #2ECC71">✓ Validé en production</span>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- TABLE DES MATIÈRES -->
+    <div class="toc" style="margin-top: 50px;">
+        <div class="toc-title">Table des matières</div>
+        <ol>
+            <li><a href="#introduction">Introduction — FenziConnect & enjeux</a></li>
+            <li><a href="#mission1">Mission 1 — Gestion des Factures (Fullstack)</a></li>
+            <li><a href="#mission2">Mission 2 — Gestion des Tâches (Agile)</a></li>
+            <li><a href="#env-tech">Environnement Technique</a></li>
+            <li><a href="#conclusion">Conclusion & Perspectives</a></li>
+        </ol>
+    </div>
+
+
+    <!-- CORPS DU RAPPORT -->
+    <main class="rapport-body">
+
+
+        <!-- 1. INTRODUCTION -->
+        <div class="section-block" id="introduction">
+            <p class="section-num">Section 01</p>
+            <h2 class="section-heading">Introduction — <span class="highlight">FenziConnect</span> & enjeux</h2>
+
+            <div class="sub-section">
+                <h3 class="sub-heading">Présentation de l'entreprise</h3>
+                <p>
+                    FenziConnect est une entreprise éditrice de solutions logicielles spécialisée dans la gestion d'entreprise (ERP/CRM). Elle accompagne ses clients dans la digitalisation de leurs processus administratifs, commerciaux et opérationnels au travers de sa plateforme centralisée <strong style="color: var(--text-main)">CoreFlow</strong>.
+                </p>
+                <p>
+                    La structure propose des modules couvrant la gestion des ressources humaines, le suivi client (CRM), la facturation et le pilotage de projets internes. L'équipe de développement travaille en méthode Agile (Scrum) avec des sprints de deux semaines.
+                </p>
+            </div>
+
+            <div class="sub-section">
+                <h3 class="sub-heading">Enjeux de la digitalisation administrative</h3>
+                <p>
+                    Dans de nombreuses structures, la gestion des factures reste un processus manuel, source d'erreurs de calcul, de pertes de documents et de délais rallongés. La transformation numérique de ces workflows répond à trois enjeux majeurs :
+                </p>
+                <ul class="tech-list">
+                    <li><strong style="color: var(--text-main)">Fiabilité</strong> — Automatiser les calculs (HT, TVA, TTC) pour éliminer les erreurs humaines.</li>
+                    <li><strong style="color: var(--text-main)">Traçabilité</strong> — Centraliser l'historique des factures et leurs états (EN_ATTENTE, PAYÉE, ANNULÉE).</li>
+                    <li><strong style="color: var(--text-main)">Collaboration</strong> — Permettre à plusieurs collaborateurs d'accéder et d'agir sur les données en temps réel.</li>
+                </ul>
+            </div>
+
+            <div class="sub-section">
+                <h3 class="sub-heading">Mission confiée</h3>
+                <p>
+                    J'ai intégré l'équipe de développement de FenziConnect en tant que stagiaire développeur fullstack. Ma mission principale consistait à concevoir et développer deux modules pour la plateforme CoreFlow :
+                </p>
+                <ul class="tech-list">
+                    <li><strong style="color: var(--text-main)">Module de Facturation</strong> — API REST Spring Boot + interface Angular pour la gestion complète du cycle de vie des factures.</li>
+                    <li><strong style="color: var(--text-main)">Module de Gestion des Tâches</strong> — Système d'affectation et de suivi des tâches pour les collaborateurs et stagiaires.</li>
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- 2. MISSION 1 — FACTURATION -->
+        <div class="section-block" id="mission1">
+            <p class="section-num">Section 02</p>
+            <h2 class="section-heading">Mission 1 — <span class="highlight">Gestion des Factures</span></h2>
+
+            <div class="sub-section">
+                <h3 class="sub-heading">🔧 Backend — Spring Boot</h3>
+                <p>
+                    Le backend repose sur une API REST développée avec Spring Boot (Java 17), structurée selon une architecture en couches stricte pour respecter le principe de séparation des responsabilités.
+                </p>
+
+                <div class="code-label">Architecture N-tiers</div>
+                <div class="code-block">Controller (HTTP)
+    └── Service (Logique métier)
+          └── Repository (JPA / PostgreSQL)
+                └── Entités : Facture, LigneFacture, Client, Collaborateur</div>
+
+                <p><strong style="color: var(--text-main)">Endpoints CRUD développés :</strong></p>
+                <ul class="tech-list">
+                    <li><code style="color: var(--tech-blue)">POST /api/factures</code> — Créer une nouvelle facture avec ses lignes de produits.</li>
+                    <li><code style="color: var(--tech-blue)">GET /api/factures</code> — Récupérer toutes les factures (avec filtres par statut, client, date).</li>
+                    <li><code style="color: var(--tech-blue)">GET /api/factures/{id}</code> — Récupérer le détail d'une facture.</li>
+                    <li><code style="color: var(--tech-blue)">PUT /api/factures/{id}/statut</code> — Changer le statut d'une facture.</li>
+                    <li><code style="color: var(--tech-blue)">DELETE /api/factures/{id}</code> — Supprimer une facture (avec contrôle métier).</li>
+                </ul>
+
+                <p><strong style="color: var(--text-main)">Algorithme de calcul automatique :</strong></p>
+                <div class="code-label">Service — Calcul HT / TVA / TTC (Java)</div>
+                <div class="code-block">public FactureDTO calculerMontants(List&lt;LigneFacture&gt; lignes) {
+    BigDecimal montantHT = lignes.stream()
+        .map(l -> l.getPrixUnitaire().multiply(BigDecimal.valueOf(l.getQuantite())))
+        .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+    BigDecimal tva = montantHT.multiply(new BigDecimal("0.20"));
+    BigDecimal ttc = montantHT.add(tva);
+
+    return new FactureDTO(montantHT, tva, ttc);
+}</div>
+
+                <p><strong style="color: var(--text-main)">Machine à états — Gestion des statuts :</strong></p>
+                <ul class="tech-list">
+                    <li><strong style="color: var(--miles-yellow)">EN_ATTENTE</strong> — État initial après création.</li>
+                    <li><strong style="color: #2ECC71">PAYÉE</strong> — Transition validée par le service comptabilité.</li>
+                    <li><strong style="color: var(--spidey-red)">ANNULÉE</strong> — Annulation possible uniquement depuis EN_ATTENTE.</li>
+                </ul>
+
+                <div class="info-box">
+                    <p>La validation des données est assurée par Bean Validation (<code>@NotNull</code>, <code>@Positive</code>, <code>@Size</code>) sur les DTOs, côté contrôleur, avant toute persistance en base.</p>
+                </div>
+            </div>
+
+            <div class="sub-section">
+                <h3 class="sub-heading">🎨 Frontend — Angular</h3>
+                <p>
+                    L'interface utilisateur a été développée avec Angular 16 (TypeScript) et SCSS. Elle se compose d'un dashboard liste et d'un formulaire de création avancé.
+                </p>
+
+                <p><strong style="color: var(--text-main)">Dashboard — Liste des factures :</strong></p>
+                <ul class="tech-list">
+                    <li>Tableau dynamique avec filtrage temps réel par statut via <code style="color: var(--tech-blue)">ngModel</code> et pipe personnalisé.</li>
+                    <li>Tri des colonnes (date, montant TTC, client, statut).</li>
+                    <li>Codes couleurs SCSS par statut : vert (#2ECC71) payée, rouge (#E23636) annulée, orange (#F39C12) en attente.</li>
+                    <li>Pagination côté client pour les listes longues.</li>
+                </ul>
+
+                <p><strong style="color: var(--text-main)">Formulaire de création — FormArray dynamique :</strong></p>
+
+                <div class="code-label">Gestion dynamique des lignes produits (TypeScript)</div>
+                <div class="code-block">// Initialisation du FormArray
+lignesArray = this.fb.array([this.creerLigneFormGroup()]);
+
+creerLigneFormGroup(): FormGroup {
+  return this.fb.group({
+    designation: ['', Validators.required],
+    quantite: [1, [Validators.required, Validators.min(1)]],
+    prixUnitaire: [0, [Validators.required, Validators.min(0.01)]]
+  });
+}
+
+// Ajout d'une ligne à la volée
+ajouterLigne() {
+  this.lignesArray.push(this.creerLigneFormGroup());
+}
+
+// Calcul TTC temps réel
+get montantTTC(): number {
+  return this.lignesArray.controls.reduce((acc, ctrl) => {
+    const ht = ctrl.value.quantite * ctrl.value.prixUnitaire;
+    return acc + ht * 1.20;
+  }, 0);
+}</div>
+
+                <div class="result-box">
+                    <div class="result-label">✓ Résultat</div>
+                    <p>L'interface permet la création de factures multi-lignes avec calcul automatique du TTC en temps réel, sans aucun rechargement de page. Les formulaires intègrent une validation réactive complète avec messages d'erreur contextuels.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 3. MISSION 2 — TÂCHES -->
+        <div class="section-block" id="mission2">
+            <p class="section-num">Section 03</p>
+            <h2 class="section-heading">Mission 2 — <span class="highlight">Gestion des Tâches</span></h2>
+
+            <div class="sub-section">
+                <h3 class="sub-heading">Méthodologie Agile — Scrum</h3>
+                <p>
+                    FenziConnect applique la méthode Scrum avec des sprints de deux semaines. J'ai participé activement à l'ensemble du cycle Agile :
+                </p>
+                <ul class="tech-list">
+                    <li><strong style="color: var(--text-main)">Daily Stand-up</strong> — Réunion quotidienne de 15 minutes : état d'avancement, blocages, prévisions.</li>
+                    <li><strong style="color: var(--text-main)">Sprint Planning</strong> — Sélection des tickets Jira et estimation en story points.</li>
+                    <li><strong style="color: var(--text-main)">Sprint Review</strong> — Démonstration des fonctionnalités développées au Product Owner.</li>
+                    <li><strong style="color: var(--text-main)">Rétrospective</strong> — Analyse des points positifs et axes d'amélioration du sprint.</li>
+                </ul>
+            </div>
+
+            <div class="sub-section">
+                <h3 class="sub-heading">Module de Suivi des Tâches</h3>
+                <p>
+                    En complément du module de facturation, j'ai développé un système de gestion de tâches interne pour les collaborateurs de FenziConnect.
+                </p>
+
+                <p><strong style="color: var(--text-main)">Fonctionnalités :</strong></p>
+                <ul class="tech-list">
+                    <li>Création et affectation de tâches aux collaborateurs, stagiaires et clients.</li>
+                    <li>Cycle de vie des tâches : <strong style="color: var(--text-muted)">À FAIRE</strong> → <strong style="color: var(--tech-blue)">EN COURS</strong> → <strong style="color: #2ECC71">TERMINÉE</strong> / <strong style="color: var(--spidey-red)">BLOQUÉE</strong>.</li>
+                    <li>Tableau Kanban intégré à l'interface CoreFlow avec drag-and-drop des tickets.</li>
+                    <li>Filtrage par collaborateur, statut et date d'échéance.</li>
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- 4. ENVIRONNEMENT TECHNIQUE -->
+        <div class="section-block" id="env-tech">
+            <p class="section-num">Section 04</p>
+            <h2 class="section-heading">Environnement <span class="highlight">Technique</span></h2>
+
+            <div class="sub-section">
+                <h3 class="sub-heading">Stack Technologique Complète</h3>
+
+                <table class="tech-table">
+                    <thead>
+                        <tr>
+                            <th>Technologie</th>
+                            <th>Usage</th>
+                            <th>Rôle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Java 17 + Spring Boot</td>
+                            <td>Backend</td>
+                            <td>API REST, logique métier, persistance</td>
+                        </tr>
+                        <tr>
+                            <td>TypeScript + Angular 16</td>
+                            <td>Frontend</td>
+                            <td>Interface utilisateur, composants réactifs</td>
+                        </tr>
+                        <tr>
+                            <td>PostgreSQL 15</td>
+                            <td>Base de données</td>
+                            <td>Stockage relationnel des entités métier</td>
+                        </tr>
+                        <tr>
+                            <td>JPA / Hibernate</td>
+                            <td>ORM</td>
+                            <td>Mapping objet-relationnel, requêtes JPQL</td>
+                        </tr>
+                        <tr>
+                            <td>SCSS</td>
+                            <td>Styling</td>
+                            <td>Variables, mixins, thème couleurs statuts</td>
+                        </tr>
+                        <tr>
+                            <td>RxJS</td>
+                            <td>Frontend</td>
+                            <td>Programmation réactive, streams HTTP</td>
+                        </tr>
+                        <tr>
+                            <td>Postman</td>
+                            <td>Tests</td>
+                            <td>Test des endpoints API, documentation</td>
+                        </tr>
+                        <tr>
+                            <td>JUnit 5 + Mockito</td>
+                            <td>Tests</td>
+                            <td>Tests unitaires des services de calcul</td>
+                        </tr>
+                        <tr>
+                            <td>Git / GitLab</td>
+                            <td>Versioning</td>
+                            <td>Branches feature/, merge requests, CI</td>
+                        </tr>
+                        <tr>
+                            <td>Jira</td>
+                            <td>Gestion projet</td>
+                            <td>Tickets, sprints, backlog Agile</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="sub-section">
+                <h3 class="sub-heading">IA & Auto-formation</h3>
+                <p>
+                    Angular n'ayant pas été couvert en profondeur lors des cours BTS, j'ai dû acquérir cette compétence en autonomie directement sur le projet de stage. L'utilisation de l'IA (ChatGPT, Claude) a joué un rôle significatif dans ce processus d'apprentissage accéléré :
+                </p>
+                <ul class="tech-list">
+                    <li><strong style="color: var(--text-main)">Débogage TypeScript</strong> — Résolution rapide des erreurs de typage et des problèmes de compilation.</li>
+                    <li><strong style="color: var(--text-main)">Génération de templates</strong> — Structure de composants Angular (service, module, intercepteur).</li>
+                    <li><strong style="color: var(--text-main)">Compréhension des patterns</strong> — Explication des concepts RxJS (Observable, Subject, pipe operators).</li>
+                    <li><strong style="color: var(--text-main)">Revue de code</strong> — Suggestion d'optimisations sur les services et les pipes.</li>
+                </ul>
+
+                <div class="info-box">
+                    <p>Cette approche illustre une compétence clé du développeur moderne : la capacité à s'auto-former en situation professionnelle, en utilisant les outils disponibles de manière efficace et critique.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 5. CONCLUSION -->
+        <div class="section-block" id="conclusion">
+            <p class="section-num">Section 05</p>
+            <h2 class="section-heading">Conclusion & <span class="highlight">Perspectives</span></h2>
+
+            <div class="sub-section">
+                <h3 class="sub-heading">Bilan du stage</h3>
+                <p>
+                    Ce stage chez FenziConnect a constitué une immersion complète dans le développement fullstack professionnel. Les apports principaux ont été :
+                </p>
+                <ul class="tech-list">
+                    <li><strong style="color: var(--text-main)">Autonomie technique</strong> — Prise en main d'Angular en situation réelle, sans encadrement direct sur la techno. Capacité à livrer des fonctionnalités testées et déployées en production.</li>
+                    <li><strong style="color: var(--text-main)">Rigueur de développement</strong> — Application systématique des bonnes pratiques : tests unitaires, validation des données, gestion des erreurs, documentation API Postman.</li>
+                    <li><strong style="color: var(--text-main)">Travail en équipe</strong> — Participation active au workflow Git (branches, merge requests, code review) et au cycle Agile Scrum sur le projet CoreFlow.</li>
+                    <li><strong style="color: var(--text-main)">Vision métier</strong> — Compréhension des enjeux réels d'un module de facturation : calcul, traçabilité, états, sécurité des données.</li>
+                </ul>
+            </div>
+
+            <div class="sub-section">
+                <h3 class="sub-heading">Difficultés rencontrées</h3>
+                <ul class="tech-list">
+                    <li><strong style="color: var(--text-main)">Gestion des CORS</strong> — Configuration des en-têtes Spring Boot pour autoriser les requêtes depuis le frontend Angular en développement.</li>
+                    <li><strong style="color: var(--text-main)">FormArray Angular</strong> — La gestion dynamique de formulaires imbriqués a nécessité une montée en compétence sur les Reactive Forms.</li>
+                    <li><strong style="color: var(--text-main)">Respect des sprints</strong> — Adapter la charge de travail aux délais de livraison en environnement Agile avec une pression réelle.</li>
+                </ul>
+            </div>
+
+            <div class="sub-section">
+                <h3 class="sub-heading">Perspectives professionnelles</h3>
+                <p>
+                    Ce stage confirme mon orientation vers le <strong style="color: var(--text-main)">développement fullstack enterprise</strong>, avec un intérêt particulier pour les architectures backend robustes (Spring Boot, API REST) et les interfaces modernes (Angular, TypeScript).
+                </p>
+                <p>
+                    L'expérience acquise sur la stack Angular / Spring Boot / PostgreSQL, utilisée dans de nombreux projets ERP et SaaS B2B, représente un atout direct pour les entretiens d'alternance et les premiers postes en développement.
+                </p>
+
+                <div class="result-box">
+                    <div class="result-label">✓ Compétences E4 BTS SIO validées</div>
+                    <p>Ce stage valide les compétences du référentiel BTS SIO SLAM : développement d'applications web fullstack, gestion de base de données relationnelle, tests et qualité logicielle, travail en équipe Agile.</p>
+                </div>
+
+                <div class="tag-row">
+                    <span class="tag">Angular</span>
+                    <span class="tag">Spring Boot</span>
+                    <span class="tag">PostgreSQL</span>
+                    <span class="tag">API REST</span>
+                    <span class="tag">Agile / Scrum</span>
+                    <span class="tag">GitLab</span>
+                    <span class="tag">Postman</span>
+                    <span class="tag">JUnit 5</span>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="rapport-footer">
+        <p>Rapport de Stage — Doryan Anglio // BTS SIO SLAM // FenziConnect // 2026</p>
+        <p style="margin-top: 8px; color: #333;">Développé dans le cadre du portfolio FNSM — Portfolio présenté au jury BTS SIO</p>
+    </footer>
+
+</body>
+</html>

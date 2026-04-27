@@ -363,22 +363,24 @@
 
                 <!-- MISSION ANNEXE — CoreFlow -->
                 <div class="col-md-6 col-lg-4 reveal delay-2 mission-card-wrapper" data-category="dev">
-                    <div class="mission-card side-mission">
+                    <div class="mission-card main-mission">
                         <div class="mission-img">
                             <img src="assets/images/coreflow.png" alt="CoreFlow — Plateforme Intranet">
-                            <span class="mission-badge blue-badge">Quête Annexe</span>
-                            <span class="mission-badge" style="background:rgba(0,229,255,0.15);color:var(--tech-blue);border:1px solid rgba(0,229,255,0.4);top:50px;">E5</span>
+                            <span class="mission-badge red-badge">Projet Principal</span>
+                            <span class="mission-badge" style="background:rgba(0,229,255,0.15);color:var(--tech-blue);border:1px solid rgba(0,229,255,0.4);top:50px;">E5 & E6</span>
                         </div>
                         <div class="mission-info">
                             <h3>CoreFlow — Plateforme Intranet</h3>
-                            <p class="mission-subtitle">BTS SIO 2ème Année — Épreuve E5</p>
-                            <p>Plateforme intranet d'entreprise regroupant la gestion des congés, des événements internes, des tickets support et l'accès aux documents selon les rôles.</p>
+                            <p class="mission-subtitle">BTS SIO 2ème Année — 2 Épreuves Professionnelles</p>
+                            <p>Plateforme intranet complète avec module de gestion des utilisateurs (RBAC, JWT, bcrypt) et portage mobile Android via Capacitor. Travail en équipe avec modélisation MySQL, architecture MVC Node.js et interface Figma/Tailwind.</p>
                             <div class="loot-label">⚡ EXP ACQUISE</div>
                             <div class="tech-tags">
-                                <span class="tag">Vue.js</span>
+                                <span class="tag">Vue.js 3</span>
                                 <span class="tag">Node.js</span>
                                 <span class="tag">MySQL</span>
-                                <span class="tag">GitHub</span>
+                                <span class="tag">Capacitor</span>
+                                <span class="tag">JWT</span>
+                                <span class="tag">Android</span>
                             </div>
                             <button class="mission-detail-btn" data-mission="coreflow">Voir le dossier →</button>
                         </div>
@@ -647,46 +649,27 @@
         <div class="container">
             <div class="section-header reveal">
                 <h2 class="section-title">The <span class="highlight">Daily Bugle</span></h2>
-                <!--
-                    ⚠️ SUJET DE VEILLE :
-                    Change la ligne ci-dessous quand tu auras choisi ton sujet.
-                    Format recommandé : "Veille Technologique — [Ton sujet]"
-                    Exemples :
-                      - "L'IA générative dans le workflow du développeur SLAM"
-                      - "WebAssembly : le futur du navigateur ?"
-                      - "Sécurité des API REST — OWASP Top 10 en 2026"
-                      - "Angular vs Vue.js : quel framework pour mon BTS ?"
-                -->
-                <p class="section-subtitle">Veille Technologique — <em>L'IA générative dans le développement Fullstack Angular / Spring Boot</em></p>
+                <p class="section-subtitle" style="font-size:1.25rem;color:var(--miles-yellow);font-weight:700;">Veille Technologique — Vibe Coding (E5 BTS SIO SLAM)</p>
             </div>
 
             <div class="row g-4">
-                <div class="col-lg-8 reveal delay-1">
-                    <div class="news-main-card">
-                        <div class="news-label">ARTICLE PRINCIPAL</div>
+                <div class="col-12 reveal delay-1">
+                    <div class="news-main-card" style="border:3px solid var(--miles-yellow);box-shadow:0 0 24px 0 rgba(255,215,0,0.15);">
+                        <div class="news-label">VEILLE PRINCIPALE — VIBE CODING</div>
                         <div class="news-content">
-                            <h3>L'IA Générative transforme-t-elle vraiment le cycle de développement Fullstack en 2026 ?</h3>
+                            <h3>Vibe Coding : Culture, Outils et Impacts sur le Développeur SLAM (2026)</h3>
                             <p>
-                                GitHub Copilot, Claude, ChatGPT — depuis 2024, les assistants IA ne sont plus des gadgets expérimentaux mais des outils intégrés au quotidien du développeur fullstack. Sur une stack Angular / Spring Boot comme celle utilisée lors de mon stage chez FenziConnect, ces outils ont permis d'accélérer le scaffolding, de réduire le temps passé sur les tâches répétitives (CRUD, formulaires, documentation) et d'accélérer la montée en compétence sur Angular en autonomie. Mais l'IA ne remplace pas le développeur : la sécurité des API, la logique métier et la revue de code restent une responsabilité humaine irremplaçable.
+                                Découvrez la veille technologique complète sur le <b>Vibe Coding</b> : définition, origines, outils, impacts sur le métier de développeur, sécurité, et préparation à l'oral du BTS SIO E5.
                             </p>
-                            <a href="veille.html" class="read-more">Lire la synthèse complète →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 reveal delay-2">
-                    <div class="news-sidebar">
-                        <div class="sidebar-item">
-                            <span class="news-date">2025 — Baeldung</span>
-                            <h4>Spring AI & GitHub Copilot — L'écosystème Java entre dans l'ère de l'IA générative</h4>
-                        </div>
-                        <div class="sidebar-item">
-                            <span class="news-date">2025 — Angular Blog</span>
-                            <h4>Angular 19 & Signals — Vers un frontend plus réactif, assisté par les outils IA de JetBrains</h4>
-                        </div>
-                        <div class="sidebar-item">
-                            <span class="news-date">2025 — Le Journal du Net</span>
-                            <h4>55% des développeurs utilisent l'IA au quotidien — ce que ça change pour les équipes DevOps et SLAM</h4>
+                            <a href="veille.html" class="btn-primary" style="margin-top:22px;max-width:340px;">→ Lire la veille complète sur le Vibe Coding</a>
+                            <ul style="margin-top:2.2rem;">
+                                <li><b>Définition & Origines</b> du Vibe Coding</li>
+                                <li><b>Outils & Pratiques</b> (VS Code, Live Share, IA, playlists, pair programming...)</li>
+                                <li><b>Impacts</b> sur la productivité, la motivation et la collaboration</li>
+                                <li><b>Risques & Sécurité</b> (distractions, shadow IT...)</li>
+                                <li><b>Bilan personnel</b> et <b>préparation à l'oral E5</b></li>
+                                <li><b>Sources fiables</b> (Le Journal du Net, Stack Overflow, GitHub Blog...)</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -924,6 +907,21 @@
                     <span id="modal-ia-text">—</span>
                 </div>
 
+            </div>
+        </div>
+    </div>
+
+
+    <!-- =====================================================
+         LIGHTBOX — Zoom au clic sur images galerie
+         ===================================================== -->
+    <div class="lightbox-overlay" id="lightbox-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="lightbox-container">
+            <img class="lightbox-image" id="lightbox-image" src="" alt="">
+            <button class="lightbox-close" id="lightbox-close" aria-label="Fermer">✕</button>
+            <div class="lightbox-nav">
+                <button class="lightbox-prev" id="lightbox-prev" aria-label="Image précédente">❮</button>
+                <button class="lightbox-next" id="lightbox-next" aria-label="Image suivante">❯</button>
             </div>
         </div>
     </div>

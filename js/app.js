@@ -243,53 +243,87 @@ document.addEventListener("DOMContentLoaded", () => {
 
         coreflow: {
             title: 'CoreFlow — Plateforme Intranet d\'Entreprise',
-            category: 'QUÊTE ANNEXE — BTS SIO 2ÈME ANNÉE',
-            objectif: 'Concevoir et développer une plateforme intranet complète pour la gestion RH et la communication interne d\'entreprise : demandes de congés, événements internes, tickets support et accès aux documents selon les rôles utilisateur.',
-            gadgets: ['Vue.js', 'Node.js', 'MySQL', 'GitHub', 'REST API'],
+            category: 'PROJET PRINCIPAL — BTS SIO 2ÈME ANNÉE',
+            objectif: 'Concevoir et développer une plateforme intranet complète pour la gestion RH et la communication interne d\'entreprise. Ma contribution : module complet de gestion des utilisateurs avec système de rôles RBAC, et portage mobile Android via Capacitor.',
+            gadgets: ['Vue.js 3', 'Node.js', 'Express', 'MySQL', 'Capacitor', 'Android Studio', 'Tailwind CSS', 'JWT', 'bcrypt', 'Postman', 'Figma'],
             proof: {
                 label: 'Voir le dépôt GitHub',
-                link: 'https://github.com/Doryan92290'
+                link: 'https://github.com/2026-BTS-SIO2-ESIC/CoreFlow'
             },
-            statut: 'Projet BTS SIO 2ème année — Épreuve E5.',
+            statut: 'Projet BTS SIO 2ème année — Épreuves E5 & E6 (2 réalisations professionnelles validées).',
             details: [
                 {
-                    category: '🧩 Fonctionnalités',
+                    category: '🎯 Réalisation 1 : Module Gestion des Utilisateurs (Web)',
                     items: [
-                        'Gestion des demandes de congés : soumission, validation manager, historique et statuts (En attente / Approuvé / Refusé).',
-                        'Calendrier des événements internes : création, inscription et notifications aux collaborateurs.',
-                        'Système de tickets support : création, assignation, suivi de résolution et clôture.',
-                        'Gestion documentaire par rôles : accès conditionnel aux documents selon le profil utilisateur (Admin, Manager, Employé).'
+                        'CRUD complet des comptes collaborateurs : création avec génération automatique de solde congés (25 CP + 10 RTT), modification partielle, activation/désactivation, suppression avec protection admin.',
+                        'Système de rôles hiérarchique (ENUM MySQL) : Admin > RH > Manager > Employé — détermine les permissions sur chaque endpoint API via middleware authorize().',
+                        'Modification sécurisée du mot de passe utilisateur : vérification de l\'ancien MDP avec bcrypt.compare(), hashage du nouveau (salt=10), accessible depuis le dashboard.',
+                        'Interface admin complète (Figma → Vue.js) : tableau filtrable avec avatars initiales, badges rôle colorés, recherche temps réel (nom/prénom/email), filtres combinés rôle + statut actif.'
                     ]
                 },
                 {
-                    category: '⚙️ Architecture Technique',
+                    category: '⚙️ Architecture Backend MVC 3 Couches (Node.js / Express)',
                     items: [
-                        'Frontend Vue.js : composants réutilisables, routing Vue Router, gestion de l\'état avec reactive refs.',
-                        'Backend Node.js / Express : API REST structurée, authentification JWT, middleware de vérification des rôles.',
-                        'Base de données MySQL : modélisation relationnelle, gestion des utilisateurs, tables congés / events / tickets / documents.',
-                        'Versionnage GitHub : branches feature, pull requests, workflow collaboratif en équipe.'
+                        'userRoutes.js : 7 routes REST sécurisées avec middlewares authenticate (JWT obligatoire) + authorize (permissions par rôle) + validate (Joi) avant chaque contrôleur.',
+                        'userController.js : couche HTTP — extraction params (req.body/params), délégation au service, formatage JSON unifié { success, message, data }.',
+                        'userService.js : logique métier — validations métier, unicité email (findByEmail), protection admin (id=1 → throw 403), bcrypt.compare() pour vérification MDP.',
+                        'userRepository.js : couche données — requêtes SQL paramétrées (?), constante USER_SELECT_FIELDS excluant password, UPDATE dynamique, toggleUserStatus(), création automatique solde_conges.'
                     ]
                 },
                 {
-                    category: '🎓 Contexte E5 — BTS SIO SLAM',
+                    category: '🔐 Sécurité & Validation',
                     items: [
-                        'Projet réalisé dans le cadre de l\'Épreuve E5 du BTS SIO SLAM — situation professionnelle significative.',
-                        'Démonstration de la maîtrise des compétences SLAM : développement web fullstack, gestion de base de données, travail en équipe.',
-                        'Architecture séparant clairement frontend (Vue.js) et backend (Node.js) — approche professionnelle.'
+                        'Authentification JWT : middleware authenticate() sur toutes les routes — userId extrait du token (req.user.userId), jamais lu depuis req.body.',
+                        'Autorisation granulaire par rôle : authorize(\'admin\',\'rh\',\'manager\') lecture • (\'admin\',\'rh\') écriture • (\'admin\') suppression.',
+                        'Hashage bcrypt (salt=10) : createUser() et updatePasswordById() côté repository — bcrypt.compare() dans updatePassword() du service.',
+                        'Protection anti-injection SQL : pool.query(query, params) avec ? sur tous les inputs — construction dynamique de WHERE avec params.push().',
+                        'Bug résolu : normalisation des rôles (Front envoyait \'Admin\' majuscule, ENUM BDD stocke \'admin\') — correction backend + validation ENUM stricte MySQL.'
+                    ]
+                },
+                {
+                    category: '📱 Réalisation 2 : Portage Mobile Android (Capacitor)',
+                    items: [
+                        'Intégration Capacitor dans le projet Vue.js existant : npm install @capacitor/core + npx cap add android — génère le dossier android/ (projet Android Studio complet) sans réécriture du code.',
+                        'Workflow de build : npm run build → npx cap sync (copie dist/ dans android/app/src/main/assets/public/) → npx cap open android → Run sur émulateur Pixel 8 API 37.',
+                        'Adaptation responsive mobile-first (Tailwind) : tableau desktop (hidden md:block) remplacé par cartes mobiles (md:hidden), modals en bottom sheet (items-end md:items-center, rounded-t-3xl), cibles tactiles min-h-[44px].',
+                        'Configuration émulateur Android : Pixel 8 API 37 (Android 13) via AVD Manager — backend Node.js accessible via 10.0.2.2:3000 (alias localhost machine hôte), variable VITE_API_URL pour gestion environnement mobile.'
+                    ]
+                },
+                {
+                    category: '🧪 Validation & Tests Postman',
+                    items: [
+                        'Collection Postman 10 scénarios : création nominale (201), email existant (400), champ manquant (400), unauthorized role (403), modification partielle (200), toggle statut (200), suppression admin bloquée (403), changement MDP nominal (200), mauvais ancien MDP (400), token absent (401).',
+                        'Tests émulateur Android : lancement app (interface chargée), connexion JWT (token reçu, redirect dashboard), affichage cartes (avatars + badges visibles), recherche temps réel (filtre instantané), création compte (solde congés auto), toggle statut (badge màj sans reload), tentative suppression admin (bouton disabled + 403 service), modification MDP (bcrypt.compare OK).'
+                    ]
+                },
+                {
+                    category: '📐 Modélisation & Conception',
+                    items: [
+                        'Base de données MySQL : table utilisateurs (13 colonnes, ENUM role, UNIQUE email, tinyint est_actif, TIMESTAMP auto) + table soldes_conges (ON DELETE CASCADE, 25 CP + 10 RTT créés automatiquement à chaque inscription).',
+                        'Maquettes Figma haute-fidélité : page liste utilisateurs (tableau + filtres), modal création (2 sections : infos personnelles / professionnelles, toggle MDP 👁️, info-box solde congés), modal confirmation suppression (⚠️ action irréversible), modal modification MDP (dashboard utilisateur).',
+                        'Diagramme de séquence UML : flux complets création/modification/suppression rôles, attribution rôles, connexion (succès & échec), consultation/modification profil, réinitialisation MDP, activation/désactivation/suppression comptes, journalisation actions sensibles.',
+                        'MCD CoreFlow : entité Utilisateurs au centre, reliée à Rôle (ENUM), Services, Tickets, Congés, Documents, Événements, Messages — modélisation relationnelle complète de l\'intranet.'
                     ]
                 }
             ],
             risks: [
-                'Gestion des rôles et de l\'authentification : implémenter un système JWT sécurisé avec middleware de contrôle d\'accès pour chaque endpoint.',
-                'Coordination équipe : synchronisation des développements frontend et backend via GitHub — gestion des branches et des conflits de merge.',
-                'Conception du modèle de données : modéliser les relations complexes (utilisateurs ↔ congés ↔ managers ↔ documents) avant de commencer le développement.',
-                'Montée en compétence sur Vue.js et Node.js en parallèle : deux technologies à maîtriser simultanément dans un délai de projet contraint.'
+                'Architecture MVC 3 couches stricte : séparation responsabilités Routes → Controller → Service → Repository — coordination entre 4 fichiers pour chaque fonctionnalité, nécessite rigueur dans le nommage et les dépendances.',
+                'Sécurité multi-niveaux : JWT + authorize() + bcrypt + requêtes paramétrées + USER_SELECT_FIELDS — chaque couche doit être testée indépendamment (Postman collection 10 scénarios pour couvrir nominal + erreurs).',
+                'Capacitor : maîtriser le workflow npm run build → npx cap sync → npx cap open android — chaque modification Vue.js nécessite rebuild + sync, gestion de l\'URL backend différente entre web (localhost:3000) et mobile (10.0.2.2:3000).',
+                'Responsive mobile-first Tailwind : logique conditionnelle (hidden md:block vs md:hidden) pour basculer tableau desktop ↔ cartes mobiles, bottom sheets (items-end md:items-center), cibles tactiles min-h-[44px] — nécessite tests sur plusieurs breakpoints.',
+                'Travail en binôme sur le même module documentaire : coordination Git pour éviter conflits, j\'étais en charge de l\'ajout/suppression (formulaire + API), mon partenaire du listing/consultation — nécessite communication constante sur les interfaces partagées.'
             ],
-            ia_boost: null
+            ia_boost: 'Maquettes Figma conçues avant le développement pour guider la réalisation technique. Utilisation de l\'IA (Claude, ChatGPT) pour optimiser les requêtes SQL, générer des tests Postman et déboguer les erreurs de CORS — gain de temps estimé à 25%.',      
+            gallery: [
+                'assets/images/coreflow/gestion-utilisateurs-desktop.png',
+                'assets/images/coreflow/modal-creation-compte.png',
+                'assets/images/coreflow/mobile-cartes-utilisateurs.png',
+                'assets/images/coreflow/backend-userservice-code.png'
+            ] 
         },
 
-        portfolio: {
-            title: 'Portfolio FNSM — Spider-Man 2 PS5',
+        portfolio: { 
+            title: 'Portfolio FNSM — Spider-Man 2 PS5', 
             category: 'QUÊTE ANNEXE — PROJET PERSONNEL',
             objectif: 'Concevoir et développer un portfolio BTS SIO SLAM entièrement personnalisé, inspiré de l\'univers visuel de Spider-Man 2 PS5. L\'idée : ne pas utiliser un template générique, mais créer une expérience unique qui reflète à la fois mon identité, ma passion pour le jeu vidéo et mes compétences techniques réelles.',
             gadgets: ['HTML5 / CSS3', 'JavaScript Vanilla', 'Bootstrap', 'Figma', 'IA (Prompt Engineering)'],
@@ -650,10 +684,15 @@ document.addEventListener("DOMContentLoaded", () => {
         if (gallerySection && galleryEl) {
             if (data.gallery && data.gallery.length > 0) {
                 galleryEl.innerHTML = data.gallery.map(src =>
-                    `<div class="modal-gallery-item"><img src="${src}" alt="${data.title}" loading="lazy"></div>`
+                    `<div class="modal-gallery-item" style="cursor: zoom-in;"><img src="${src}" alt="${data.title}" loading="lazy" data-lightbox="${src}"></div>`
                 ).join('');
                 gallerySection.style.display = 'flex';
                 gallerySection.style.flexDirection = 'column';
+
+                // Ajouter event listeners pour la lightbox
+                galleryEl.querySelectorAll('img').forEach(img => {
+                    img.addEventListener('click', () => openLightbox(data.gallery, data.gallery.indexOf(img.dataset.lightbox)));
+                });
             } else {
                 gallerySection.style.display = 'none';
             }
@@ -833,6 +872,101 @@ document.addEventListener('mousemove', (e) => {
     // On calcule le mouvement (très léger pour ne pas donner le mal de mer)
     const x = e.clientX / window.innerWidth;
     const y = e.clientY / window.innerHeight;
-    
+
     overlay.style.transform = `translate(-${x * 20}px, -${y * 20}px)`;
 });
+
+// ==========================================================
+// --- LIGHTBOX — Zoom au clic sur les images
+// ==========================================================
+
+let lightboxGallery = [];
+let lightboxCurrentIndex = 0;
+
+const lightboxOverlay = document.getElementById('lightbox-overlay');
+const lightboxImage = document.getElementById('lightbox-image');
+const lightboxClose = document.getElementById('lightbox-close');
+const lightboxPrev = document.getElementById('lightbox-prev');
+const lightboxNext = document.getElementById('lightbox-next');
+
+function openLightbox(gallery, index = 0) {
+    if (!gallery || gallery.length === 0) return;
+
+    lightboxGallery = gallery;
+    lightboxCurrentIndex = index;
+    showLightboxImage(index);
+
+    if (lightboxOverlay) {
+        lightboxOverlay.classList.add('open');
+        lightboxOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeLightbox() {
+    if (lightboxOverlay) {
+        lightboxOverlay.classList.remove('open');
+        lightboxOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+}
+
+function showLightboxImage(index) {
+    if (index >= 0 && index < lightboxGallery.length) {
+        lightboxCurrentIndex = index;
+        lightboxImage.src = lightboxGallery[index];
+        lightboxImage.alt = `Image ${index + 1}`;
+
+        // Mettre à jour l'état des boutons nav
+        if (lightboxPrev) lightboxPrev.disabled = index === 0;
+        if (lightboxNext) lightboxNext.disabled = index === lightboxGallery.length - 1;
+    }
+}
+
+// Event listeners lightbox
+if (lightboxClose) {
+    lightboxClose.addEventListener('click', closeLightbox);
+}
+
+if (lightboxPrev) {
+    lightboxPrev.addEventListener('click', () => {
+        if (lightboxCurrentIndex > 0) {
+            showLightboxImage(lightboxCurrentIndex - 1);
+        }
+    });
+}
+
+if (lightboxNext) {
+    lightboxNext.addEventListener('click', () => {
+        if (lightboxCurrentIndex < lightboxGallery.length - 1) {
+            showLightboxImage(lightboxCurrentIndex + 1);
+        }
+    });
+}
+
+// Fermer avec Échap
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightboxOverlay?.classList.contains('open')) {
+        closeLightbox();
+    }
+});
+
+// Navigation au clavier (flèches)
+document.addEventListener('keydown', (e) => {
+    if (!lightboxOverlay?.classList.contains('open')) return;
+
+    if (e.key === 'ArrowLeft' && lightboxCurrentIndex > 0) {
+        showLightboxImage(lightboxCurrentIndex - 1);
+    } else if (e.key === 'ArrowRight' && lightboxCurrentIndex < lightboxGallery.length - 1) {
+        showLightboxImage(lightboxCurrentIndex + 1);
+    }
+});
+
+// Fermer en cliquant sur l'overlay
+if (lightboxOverlay) {
+    lightboxOverlay.addEventListener('click', (e) => {
+        if (e.target === lightboxOverlay) {
+            closeLightbox();
+        }
+    });
+}
